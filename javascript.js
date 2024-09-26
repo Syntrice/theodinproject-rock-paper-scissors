@@ -1,5 +1,7 @@
 
 const choices = {"rock" : "scissors", "paper" : "rock", "scissors" : "paper"}
+let humanScore = 0
+let computerScore = 0
 
 function getComputerChoice() {
 
@@ -18,4 +20,25 @@ function getHumanChoice() {
     }
 }
 
-console.log(getHumanChoice())
+function playRound(humanChoice, computerChoice) {
+    if (choices[humanChoice] === computerChoice) {
+        console.log(`You win! ${humanChoice} beats ${choices[humanChoice]}!`)
+        humanScore++
+    } else if (choices[computerChoice] === humanChoice) {
+        console.log(`You loose! ${computerChoice} beats ${choices[computerChoice]}!`)
+        computerChoice++
+    } else {
+        console.log(`It's a draw! You and the computer both chose ${humanChoice}!`)
+    }
+}
+
+while (true) {
+    let humanChoice = getHumanChoice()
+    console.log(`You chose: ${humanChoice}`)
+
+    let computerChoice = getComputerChoice()
+    console.log(`Computer choses: ${computerChoice}`)
+
+    playRound(humanChoice, computerChoice)
+}
+
