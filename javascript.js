@@ -1,10 +1,8 @@
-
-const choices = {"rock" : "scissors", "paper" : "rock", "scissors" : "paper"};
+const choices = { rock: "scissors", paper: "rock", scissors: "paper" };
 
 function getComputerChoice() {
-
-    /** we need to use Math.random() and Math.floor to generate integers in 
-     * a range */ 
+    /** we need to use Math.random() and Math.floor to generate integers in
+     * a range */
     let index = Math.floor(Math.random() * 3);
     return Object.keys(choices)[index];
 }
@@ -18,61 +16,34 @@ function getHumanChoice() {
     }
 }
 
-function playGame(rounds = 5) {
-
-    let humanScore = 0;
-    let computerScore = 0;
-
-    // Function to play a round. Will return false if round is a draw, otherwise true
-    function playRound(humanChoice, computerChoice) {
-        if (choices[humanChoice] === computerChoice) {
-            console.log(`You win! ${humanChoice} beats ${choices[humanChoice]}!`);
-            humanScore++;
-            return true
-        } else if (choices[computerChoice] === humanChoice) {
-            console.log(`You loose! ${computerChoice} beats ${choices[computerChoice]}!`);
-            computerScore++
-            return true
-        } else {
-            console.log(`It's a draw! You and the computer both chose ${humanChoice}!`);
-            return false
-        }
-    }
-
-    let currentRound = 0;
-    while (currentRound < rounds) {
-        console.log(`Your score: ${humanScore}`)
-        console.log(`Computer score: ${computerScore}`)
-        let humanChoice = getHumanChoice();
-
-        // clause for invalid human input
-        if (humanChoice === undefined) {
-            console.log("Please enter a valid choice. Possible choices are 'rock', 'paper', or 'scissors'")
-            continue;
-        }
-        let computerChoice = getComputerChoice();
-        
-        console.log(`You chose: ${humanChoice}`);
-        console.log(`Computer chose: ${computerChoice}`);
-
-        let isDraw = playRound(humanChoice, computerChoice);
-        if (isDraw) {
-            currentRound++
-        }
-    }
-
-    console.log("Game over!")
-    console.log(`You scored: ${humanScore}`)
-    console.log(`Computer scored: ${computerScore}`)
-
-    if (humanScore > computerScore) {
-        console.log("You win!")
-    } else if (computerScore > humanScore) {
-        console.log("Computer wins!")
+// Function to play a round. Will return false if round is a draw, otherwise true
+function playRound(humanChoice, computerChoice) {
+    if (choices[humanChoice] === computerChoice) {
+        console.log(`You win! ${humanChoice} beats ${choices[humanChoice]}!`);
+        return true;
+    } else if (choices[computerChoice] === humanChoice) {
+        console.log(
+            `You loose! ${computerChoice} beats ${choices[computerChoice]}!`
+        );
+        return true;
     } else {
-        console.log("You and computer drew!")
+        console.log(
+            `It's a draw! You and the computer both chose ${humanChoice}!`
+        );
+        return false;
     }
-
 }
 
-playGame()
+const btnRock = document.querySelector("#btn-rock");
+const btnPaper = document.querySelector("#btn-paper");
+const btnScissors = document.querySelector("#btn-scissors");
+
+btnRock.addEventListener("click", () => {
+    playRound("rock", getComputerChoice());
+});
+btnPaper.addEventListener("click", () => {
+    playRound("paper", getComputerChoice());
+});
+btnScissors.addEventListener("click", () => {
+    playRound("scissors", getComputerChoice());
+});
