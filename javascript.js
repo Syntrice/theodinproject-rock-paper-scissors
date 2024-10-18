@@ -1,5 +1,12 @@
 const choices = { rock: "scissors", paper: "rock", scissors: "paper" };
 
+const btnRock = document.querySelector("#btn-rock");
+const btnPaper = document.querySelector("#btn-paper");
+const btnScissors = document.querySelector("#btn-scissors");
+
+const results = document.querySelector("#results");
+results.textContent = "Click on a button to select a choice";
+
 function getComputerChoice() {
     /** we need to use Math.random() and Math.floor to generate integers in
      * a range */
@@ -19,24 +26,16 @@ function getHumanChoice() {
 // Function to play a round. Will return false if round is a draw, otherwise true
 function playRound(humanChoice, computerChoice) {
     if (choices[humanChoice] === computerChoice) {
-        console.log(`You win! ${humanChoice} beats ${choices[humanChoice]}!`);
+        results.textContent = `You win! ${humanChoice} beats ${choices[humanChoice]}!`;
         return true;
     } else if (choices[computerChoice] === humanChoice) {
-        console.log(
-            `You loose! ${computerChoice} beats ${choices[computerChoice]}!`
-        );
+        results.textContent = `You loose! ${computerChoice} beats ${choices[computerChoice]}!`;
         return true;
     } else {
-        console.log(
-            `It's a draw! You and the computer both chose ${humanChoice}!`
-        );
+        results.textContent = `It's a draw! You and the computer both chose ${humanChoice}!`;
         return false;
     }
 }
-
-const btnRock = document.querySelector("#btn-rock");
-const btnPaper = document.querySelector("#btn-paper");
-const btnScissors = document.querySelector("#btn-scissors");
 
 btnRock.addEventListener("click", () => {
     playRound("rock", getComputerChoice());
