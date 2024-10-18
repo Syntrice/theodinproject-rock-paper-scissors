@@ -6,6 +6,7 @@ const btnScissors = document.querySelector("#btn-scissors");
 
 const results = document.querySelector("#results");
 const score = document.querySelector("#score");
+const roundsInformation = document.querySelector("#rounds");
 
 function getComputerChoice() {
     /** we need to use Math.random() and Math.floor to generate integers in
@@ -43,6 +44,7 @@ function playGame(rounds = 5) {
     }
 
     function updateScoreText() {
+        roundsInformation.textContent = `Round ${currentRound} of ${rounds}`;
         if (currentRound < rounds) {
             score.textContent = `Your Score: ${humanScore} Computer Score: ${computerScore}`;
         } else {
