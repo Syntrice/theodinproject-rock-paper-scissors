@@ -1,3 +1,3 @@
 # The Odin Project: Rock Paper Scissors
 
-A Rock Paper Scissors game, playable entirely in the console. This project is an exercise from The Odin Project, and can be found here https://www.theodinproject.com/lessons/foundations-rock-paper-scissors.
+A very simple example of Rock Paper Scissors game in JavaScript. It was a mini project completed as part of The Odin Project, and can be found here https://www.theodinproject.com/lessons/foundations-rock-paper-scissors.
